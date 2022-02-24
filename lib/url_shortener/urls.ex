@@ -1,4 +1,8 @@
 defmodule Shortener.URLs do
+  @moduledoc """
+  Hold business logic for URLs such as URL creations.
+  """
+
   alias Shortener.{Repo, URL}
 
   require Logger

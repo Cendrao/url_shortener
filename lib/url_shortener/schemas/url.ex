@@ -1,8 +1,12 @@
 defmodule Shortener.URL do
+  @moduledoc """
+  Holds the URL schema.
+  """
   use Ecto.Schema
 
   import Ecto.Changeset
 
+  # credo:disable-for-next-line
   @url_regex ~r/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
 
   schema "urls" do

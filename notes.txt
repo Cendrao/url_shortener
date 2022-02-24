@@ -1,45 +1,40 @@
-# URL Shortener
+Setup
 
-## Installation
-[`docker`](https://docs.docker.com/engine/install/) and [`docker-compose`](https://docs.docker.com/compose/install/) are required before continuing with the set up.
+Docker and docker-compose are required before continuing with the set up.
 
-To set up both the application and the database you need to run the following commands:
-```
+First run the following commands to set up the application and database:
+
 docker-compose build
 docker-compose run --rm web mix deps.get
 docker-compose run --rm web mix ecto.setup
-```
 
-## Usage
+
 To start the application:
-```
+
 docker-compose up
-```
 
-The application will be avaiable at [http://localhost:4000](http://localhost:4000).
+The application will be avaiable at http://localhost:4000.
 
-## Running tests
-```
+
+To run the tests:
+
 docker-compose run --rm web mix test
-```
-
-# Application Design 
-
-### Overall design
-I opted to use the `find or create` strategy to avoid URLs duplication in the database and for the slug generation, I opted to use the given URL encode it as base64, shuffle the characters and take `6 characters` which gives us approximately 53 billion different combinations.
-
-### Database design
-I kept the database design simple with only the original url and the slug and kept the `id` because in feature we may want to add some relationships as users URLs.
-
-### Testing
-For testing, I've added unit tests for each layer like for the changeset, business module, and controller. In the controller test, I tried to focus on the UI behavior like presenting the shortened URL and showing the areas/error when needed. For the business module, I tested the `find_or_create` strategy to guarantee we're not inserting duplicates into the database and in the schema module I tested the changeset that validates the URL format and attributes presence.
 
 
-## Front-end
+Design
+I opted to use the find or create strategy to avoid URLs duplication in the database and for the slug generation, I opted to use the given URL encode it as base64, shuffle the characters and take 6 characters which gives us approximately 53 billion different combinations.
 
+
+Database design
+I kept the database design simple with only the original url and the slug and kept the id because in feature we may want to add some relationships as users URLs.
+
+Testing
+For testing, I've added unit tests for each layer like for the changeset, business module, and controller. In the controller test, I tried to focus on the UI behavior like presenting the shortened URL and showing the areas/error when needed. For the business module, I tested the find_or_create strategy to guarantee we're not inserting duplicates into the database and in the schema module I tested the changeset that validates the URL format and attributes presence.
+
+Front-end
 For front-end I just removed the white background and did a javascript button to copy the result to user's clipboard which can be handy.
 
-## Next steps
+I think the next steps could be:
 
-- Monitor the URL replication and maybe remove the `find_or_create` strategy;
+- Monitor the URL replication and maybe remove the find_or_create strategy;
 - Monitor the latency as the database grows and maybe add a cache layer;
