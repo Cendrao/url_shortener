@@ -1,7 +1,7 @@
 <%= form_for @conn, Routes.url_path(@conn, :create), fn f -> %>
   <label>
-  <%= text_input f, :original_url,[placeholder: "Paste your url", class: "shortener-input", value: nil, required: true] %>
+  <%= text_input f, :original_url,[placeholder: "Paste your url", class: "text-white shortener-input", value: nil, required: true] %>
   </label>
 
-  <%= submit "Submit" %>
+  <%= submit "Shorten my URL!" %>
 <% end %>

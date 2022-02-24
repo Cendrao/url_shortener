@@ -1,5 +1,14 @@
 /* This file is for your main application CSS */
 @import "./phoenix.css";
+@import "./elements.css";
+
+.text-white{
+  color: rgba(255, 255, 255, 1);
+}
+
+.bg-dark{
+  background-color: rgba(33, 37, 41, 1);
+}
 
 /* Alerts and form errors used by phx.new */
 .alert {

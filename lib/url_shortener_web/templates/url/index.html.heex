@@ -1,13 +1,14 @@
 <%= if @shortened_url != nil do %>
-  <h2>Shortened URL successfully created!</h2>
-  <textarea class="js-copytextarea" readonly><%= @shortened_url %></textarea>
-  <p>
-  <button class="js-textareacopybtn copy-button" style="vertical-align:top;">Copy content to Clipboard</button>
-  </p>
+<h2>Shortened URL successfully created!</h2>
+Copy and paste the following URL or use the copy button.
+<textarea class="js-copyarea copy-area text-white" readonly><%= @shortened_url %></textarea>
+<p>
+  <button class="js-copy-button copy-button" style="">Copy content to Clipboard</button>
+</p>
 
-  <h3>Shorten another URL</h3>
-  <% else %>
-  <h3>Shorten your URL</h3>
-  <% end %>
+<h3>Shorten another URL</h3>
+<% else %>
+<h3>Shorten your URL</h3>
+<% end %>
 
-  <%= render "_form.html", conn: @conn %>
+<%= render "_form.html", conn: @conn %>
